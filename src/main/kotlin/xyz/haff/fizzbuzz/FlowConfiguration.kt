@@ -7,8 +7,10 @@ import org.springframework.integration.dsl.integrationFlow
 @Configuration
 class FlowConfiguration {
 
+
     /*
     @Bean
     fun flow() = integrationFlow()
      */
+
 }
