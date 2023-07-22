@@ -5,12 +5,16 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.integration.dsl.integrationFlow
 
 @Configuration
-class FlowConfiguration {
+class FlowConfiguration(
+    private val redisCounterService: RedisCounterService,
+) {
 
 
-    /*
     @Bean
-    fun flow() = integrationFlow()
-     */
+    fun flow() = integrationFlow({ redisCounterService.next() }, { poller { it.fixedRate(1000).maxMessagesPerPoll(1) }}) {
+        handle {
+            println(it.payload)
+        }
+    }
 
 }
