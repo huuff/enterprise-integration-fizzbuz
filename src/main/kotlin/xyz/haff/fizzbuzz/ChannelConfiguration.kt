@@ -19,4 +19,7 @@ class ChannelConfiguration {
 
     @Bean
     fun numberChannel(): MessageChannel = DirectChannel()
+
+    @Bean
+    fun printChannel(): MessageChannel = DirectChannel()
 }

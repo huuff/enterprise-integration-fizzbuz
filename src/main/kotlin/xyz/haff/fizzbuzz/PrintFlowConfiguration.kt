@@ -7,14 +7,14 @@ import org.springframework.integration.dsl.integrationFlow
 import org.springframework.messaging.MessageChannel
 
 @Configuration
-class BuzzFlowConfiguration(
-    private val buzzChannel: MessageChannel,
+class PrintFlowConfiguration(
     private val printChannel: MessageChannel,
 ) {
 
     @Bean
-    fun buzzFlow(): StandardIntegrationFlow = integrationFlow(buzzChannel) {
-        transform<Long> { "Buzz" }
-        channel(printChannel)
+    fun printFlow(): StandardIntegrationFlow = integrationFlow(printChannel) {
+        handle {
+            println(it.payload)
+        }
     }
 }

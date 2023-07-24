@@ -9,12 +9,11 @@ import org.springframework.messaging.MessageChannel
 @Configuration
 class NumberFlowConfiguration(
     private val numberChannel: MessageChannel,
+    private val printChannel: MessageChannel,
 ) {
 
     @Bean
     fun numberFlow(): StandardIntegrationFlow = integrationFlow(numberChannel) {
-        handle { // TODO: How can I type this correctly?
-            println(it.payload)
-        }
+        channel(printChannel)
     }
 }
