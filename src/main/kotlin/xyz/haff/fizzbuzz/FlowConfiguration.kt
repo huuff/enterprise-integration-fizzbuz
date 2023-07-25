@@ -19,7 +19,8 @@ class FlowConfiguration(
     fun flow(
         fizzBuzzChannel: MessageChannel,
     ): StandardIntegrationFlow =
-        integrationFlow({ redisCounterService.next() }, { poller { it.fixedRate(1000).maxMessagesPerPoll(1) } }) {
+        // TODO: Receive the rate from properties
+        integrationFlow({ redisCounterService.next() }, { poller { it.fixedRate(250).maxMessagesPerPoll(1) } }) {
             channel(inputChannel)
             route(fizzBuzzRouter)
         }

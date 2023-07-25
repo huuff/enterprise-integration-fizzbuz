@@ -8,26 +8,37 @@ import org.springframework.integration.channel.DirectChannel
 import org.springframework.messaging.MessageChannel
 
 @Configuration
-class ChannelConfiguration {
+class ChannelConfiguration(
+    private val connectionFactory: AbstractConnectionFactory
+) {
 
     @Bean
-    fun inputChannel(connectionFactory: AbstractConnectionFactory): MessageChannel
-        = Amqp.channel(connectionFactory)
+    fun inputChannel(): MessageChannel = Amqp.channel(connectionFactory)
         .queueName("input")
         .getObject()
 
     @Bean
-    fun fizzBuzzChannel(): MessageChannel = DirectChannel()
+    fun fizzBuzzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .queueName("fizzbuzz")
+        .getObject()
 
     @Bean
-    fun fizzChannel(): MessageChannel = DirectChannel()
+    fun fizzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .queueName("fizz")
+        .getObject()
 
     @Bean
-    fun buzzChannel(): MessageChannel = DirectChannel()
+    fun buzzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .queueName("buzz")
+        .getObject()
 
     @Bean
-    fun numberChannel(): MessageChannel = DirectChannel()
+    fun numberChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .queueName("number")
+        .getObject()
 
     @Bean
-    fun printChannel(): MessageChannel = DirectChannel()
+    fun printChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .queueName("print")
+        .getObject()
 }
