@@ -11,15 +11,16 @@ import org.springframework.messaging.MessageChannel
 @Configuration
 class FlowConfiguration(
     private val redisCounterService: RedisCounterService,
+    private val inputChannel: MessageChannel,
     private val fizzBuzzRouter: FizzBuzzRouter,
 ) {
 
-    // TODO: Send the polled integers to RabbitMQ
     @Bean
     fun flow(
         fizzBuzzChannel: MessageChannel,
     ): StandardIntegrationFlow =
         integrationFlow({ redisCounterService.next() }, { poller { it.fixedRate(1000).maxMessagesPerPoll(1) } }) {
+            channel(inputChannel)
             route(fizzBuzzRouter)
         }
 
