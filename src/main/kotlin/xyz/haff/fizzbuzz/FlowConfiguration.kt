@@ -13,14 +13,14 @@ class FlowConfiguration(
     private val redisCounterService: RedisCounterService,
     private val inputChannel: MessageChannel,
     private val fizzBuzzRouter: FizzBuzzRouter,
+    private val params: ParamsConfiguration,
 ) {
 
     @Bean
     fun flow(
         fizzBuzzChannel: MessageChannel,
     ): StandardIntegrationFlow =
-        // TODO: Receive the rate from properties
-        integrationFlow({ redisCounterService.next() }, { poller { it.fixedRate(250).maxMessagesPerPoll(1) } }) {
+        integrationFlow({ redisCounterService.next() }, { poller { it.fixedRate(params.produceRateMs).maxMessagesPerPoll(1) } }) {
             channel(inputChannel)
             route(fizzBuzzRouter)
         }
