@@ -1,2 +1,7 @@
 params:
   produceRateMs: 250
+
+spring:
+  docker:
+    compose:
+      file: ./compose.yml

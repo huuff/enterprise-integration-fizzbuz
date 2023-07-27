@@ -25,6 +25,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-integration")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.integration:spring-integration-amqp")
+    implementation("org.springframework.boot:spring-boot-docker-compose")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.amqp:spring-rabbit-test")
     testImplementation("org.springframework.integration:spring-integration-test")
