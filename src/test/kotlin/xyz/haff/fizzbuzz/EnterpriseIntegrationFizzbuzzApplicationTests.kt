@@ -16,11 +16,11 @@ class EnterpriseIntegrationFizzbuzzApplicationTests {
     companion object {
         @Container
         @ServiceConnection
-        val rabbitMQContainer = RabbitMQContainer("rabbitmq:3.12.2-alpine")
+        val rabbitMQContainer = RabbitMQContainer("rabbitmq:3-alpine")
 
         @Container
         @ServiceConnection
-        val redisContainer = GenericContainer("redis:7.0.12-alpine").withExposedPorts(6379)
+        val redisContainer = GenericContainer("redis:7.0-alpine").withExposedPorts(6379)
     }
 
     @Test
