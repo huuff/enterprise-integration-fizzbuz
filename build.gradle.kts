@@ -29,6 +29,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.amqp:spring-rabbit-test")
     testImplementation("org.springframework.integration:spring-integration-test")
+    testImplementation("org.springframework.integration:spring-integration-test-support")
     testImplementation("org.testcontainers:testcontainers")
     testImplementation("org.testcontainers:rabbitmq")
     testImplementation("org.testcontainers:junit-jupiter")

@@ -7,6 +7,7 @@ import org.springframework.integration.amqp.dsl.Amqp
 import org.springframework.integration.channel.DirectChannel
 import org.springframework.messaging.MessageChannel
 
+// TODO: These `getObject` invocations carry a comment that say it shouldn't be invoked? I should read about it
 @Configuration
 class ChannelConfiguration(
     private val connectionFactory: AbstractConnectionFactory

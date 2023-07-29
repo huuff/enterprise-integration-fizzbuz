@@ -3,7 +3,6 @@ package xyz.haff.fizzbuzz
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection
-import org.springframework.context.annotation.Bean
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.RabbitMQContainer
 import org.testcontainers.junit.jupiter.Container
