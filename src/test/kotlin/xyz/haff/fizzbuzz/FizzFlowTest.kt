@@ -31,7 +31,7 @@ class FizzFlowTest {
         flow.start()
 
         // ACT
-        sourceChannel.send(GenericMessage(1L))
+        sourceChannel.send(GenericMessage(3L))
         val result = destinationChannel.receive()
 
         // ASSERT
