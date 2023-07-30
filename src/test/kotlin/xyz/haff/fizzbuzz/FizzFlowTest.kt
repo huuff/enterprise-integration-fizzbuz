@@ -14,15 +14,6 @@ import org.springframework.messaging.support.GenericMessage
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.context.junit4.SpringRunner
 
-
-/*
-@SpringJUnitConfig
-@Testcontainers
-@RunWith(SpringRunner::class)
-@Import(FizzFlowConfiguration::class, ChannelConfiguration::class, RabbitAutoConfiguration::class)
-@SpringIntegrationTest
- */
-
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
 @EnableIntegration
@@ -32,21 +23,7 @@ class FizzFlowTest {
     @Autowired
     lateinit var context: IntegrationFlowContext
 
-    /*
-    @Autowired
-    lateinit var mockIntegrationContext: MockIntegrationContext
 
-    // TODO: Repeated in the ApplicationTests, externalize it somehow
-    companion object {
-        @Container
-        @ServiceConnection
-        val rabbitMQContainer = RabbitMQContainer("rabbitmq:3-alpine")
-
-        @Container
-        @ServiceConnection
-        val redisContainer = GenericContainer("redis:7.0-alpine").withExposedPorts(6379)
-    }
-    */
 
     @Test
     fun convertsToFizz() {
