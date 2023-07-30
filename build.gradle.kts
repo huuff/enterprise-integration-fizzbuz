@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.8.22"
     kotlin("plugin.spring") version "1.8.22"
     id("com.adarshr.test-logger") version "3.2.0"
+    id("org.jetbrains.kotlinx.kover") version "0.7.3"
 }
 
 group = "xyz.haff"
@@ -46,4 +47,5 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    finalizedBy(tasks.koverHtmlReport)
 }
