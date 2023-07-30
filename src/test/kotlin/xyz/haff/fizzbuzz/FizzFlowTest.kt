@@ -8,7 +8,6 @@ import org.springframework.integration.channel.DirectChannel
 import org.springframework.integration.channel.QueueChannel
 import org.springframework.integration.config.EnableIntegration
 import org.springframework.integration.dsl.context.IntegrationFlowContext
-import org.springframework.integration.test.context.SpringIntegrationTest
 import org.springframework.integration.test.matcher.PayloadMatcher.hasPayload
 import org.springframework.messaging.support.GenericMessage
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
@@ -17,13 +16,10 @@ import org.springframework.test.context.junit4.SpringRunner
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
 @EnableIntegration
-@SpringIntegrationTest
 class FizzFlowTest {
 
     @Autowired
     lateinit var context: IntegrationFlowContext
-
-
 
     @Test
     fun convertsToFizz() {
