@@ -15,31 +15,37 @@ class ChannelConfiguration(
 
     @Bean
     fun inputChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .datatype(Long::class.java)
         .queueName("input")
         .getObject()
 
     @Bean
     fun fizzBuzzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .datatype(Long::class.java)
         .queueName("fizzbuzz")
         .getObject()
 
     @Bean
     fun fizzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .datatype(Long::class.java)
         .queueName("fizz")
         .getObject()
 
     @Bean
     fun buzzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .datatype(Long::class.java)
         .queueName("buzz")
         .getObject()
 
     @Bean
     fun numberChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .datatype(Long::class.java)
         .queueName("number")
         .getObject()
 
     @Bean
     fun printChannel(): MessageChannel = Amqp.channel(connectionFactory)
+        .datatype(String::class.java)
         .queueName("print")
         .getObject()
 }

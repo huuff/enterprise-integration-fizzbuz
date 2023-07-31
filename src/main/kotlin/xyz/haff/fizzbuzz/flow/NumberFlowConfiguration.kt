@@ -14,6 +14,7 @@ class NumberFlowConfiguration(
 
     @Bean
     fun numberFlow(): StandardIntegrationFlow = integrationFlow(numberChannel) {
+        transform<Long> { it.toString() }
         channel(printChannel)
     }
 }
