@@ -1,4 +1,4 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.flow
 
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory
 import org.springframework.context.annotation.Bean

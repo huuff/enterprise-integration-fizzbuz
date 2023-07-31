@@ -1,4 +1,4 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.flow
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

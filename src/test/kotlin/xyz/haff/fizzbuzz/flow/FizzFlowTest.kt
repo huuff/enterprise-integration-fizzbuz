@@ -1,4 +1,4 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.flow
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.Test
@@ -12,29 +12,30 @@ import org.springframework.integration.test.matcher.PayloadMatcher.hasPayload
 import org.springframework.messaging.support.GenericMessage
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.context.junit4.SpringRunner
+import xyz.haff.fizzbuzz.flow.FizzFlowConfiguration
 
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
 @EnableIntegration
-class BuzzFlowTest {
+class FizzFlowTest {
 
     @Autowired
     lateinit var context: IntegrationFlowContext
 
     @Test
-    fun convertsToBuzz() {
+    fun convertsToFizz() {
         // ARRANGE
         val sourceChannel = DirectChannel()
         val destinationChannel = QueueChannel()
-        val flow = BuzzFlowConfiguration(sourceChannel, destinationChannel).buzzFlow()
+        val flow = FizzFlowConfiguration(sourceChannel, destinationChannel).fizzFlow()
         context.registration(flow).register()
         flow.start()
 
         // ACT
-        sourceChannel.send(GenericMessage(5L))
+        sourceChannel.send(GenericMessage(3L))
         val result = destinationChannel.receive()
 
         // ASSERT
-        assertThat(result, hasPayload("Buzz"))
+        assertThat(result, hasPayload("Fizz"))
     }
 }

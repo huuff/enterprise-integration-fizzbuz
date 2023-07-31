@@ -1,4 +1,4 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.bind.ConstructorBinding

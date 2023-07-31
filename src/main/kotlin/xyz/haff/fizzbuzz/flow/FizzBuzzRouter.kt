@@ -1,5 +1,6 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.flow
 
+import org.springframework.integration.annotation.Router
 import org.springframework.messaging.MessageChannel
 import org.springframework.stereotype.Service
 
@@ -11,6 +12,7 @@ class FizzBuzzRouter(
     private val numberChannel: MessageChannel,
 ) {
 
+    @Router
     fun route(input: Long): MessageChannel {
         return when {
             input % 15 == 0L -> fizzBuzzChannel

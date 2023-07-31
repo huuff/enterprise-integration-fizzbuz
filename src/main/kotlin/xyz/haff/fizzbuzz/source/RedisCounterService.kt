@@ -1,8 +1,9 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.source
 
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.stereotype.Service
+import xyz.haff.fizzbuzz.config.REDIS_COUNTER_KEY
 
 @Service
 class RedisCounterService(

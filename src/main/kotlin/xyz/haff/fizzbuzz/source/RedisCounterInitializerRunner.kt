@@ -1,4 +1,4 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.source
 
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service

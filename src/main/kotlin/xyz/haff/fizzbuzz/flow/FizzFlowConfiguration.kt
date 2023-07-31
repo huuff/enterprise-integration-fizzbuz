@@ -1,4 +1,4 @@
-package xyz.haff.fizzbuzz
+package xyz.haff.fizzbuzz.flow
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -7,13 +7,14 @@ import org.springframework.integration.dsl.integrationFlow
 import org.springframework.messaging.MessageChannel
 
 @Configuration
-class NumberFlowConfiguration(
-    private val numberChannel: MessageChannel,
+class FizzFlowConfiguration(
+    private val fizzChannel: MessageChannel,
     private val printChannel: MessageChannel,
 ) {
 
     @Bean
-    fun numberFlow(): StandardIntegrationFlow = integrationFlow(numberChannel) {
+    fun fizzFlow(): StandardIntegrationFlow = integrationFlow(fizzChannel) {
+        transform<Long> { "Fizz" }
         channel(printChannel)
     }
 }
