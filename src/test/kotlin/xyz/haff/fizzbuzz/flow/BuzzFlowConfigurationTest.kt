@@ -12,30 +12,29 @@ import org.springframework.integration.test.matcher.PayloadMatcher.hasPayload
 import org.springframework.messaging.support.GenericMessage
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.context.junit4.SpringRunner
-import xyz.haff.fizzbuzz.flow.BuzzFlowConfiguration
 
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
 @EnableIntegration
-class FizzBuzzFlowTest {
+class BuzzFlowConfigurationTest {
 
     @Autowired
     lateinit var context: IntegrationFlowContext
 
     @Test
-    fun convertsToFizzBuzz() {
+    fun convertsToBuzz() {
         // ARRANGE
         val sourceChannel = DirectChannel()
         val destinationChannel = QueueChannel()
-        val flow = FizzBuzzFlowConfiguration(sourceChannel, destinationChannel).fizzBuzzFlow()
+        val flow = BuzzFlowConfiguration(sourceChannel, destinationChannel).buzzFlow()
         context.registration(flow).register()
         flow.start()
 
         // ACT
-        sourceChannel.send(GenericMessage(15L))
+        sourceChannel.send(GenericMessage(5L))
         val result = destinationChannel.receive()
 
         // ASSERT
-        assertThat(result, hasPayload("FizzBuzz"))
+        assertThat(result, hasPayload("Buzz"))
     }
 }

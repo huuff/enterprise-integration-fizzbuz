@@ -12,12 +12,11 @@ import org.springframework.integration.test.matcher.PayloadMatcher.hasPayload
 import org.springframework.messaging.support.GenericMessage
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.context.junit4.SpringRunner
-import xyz.haff.fizzbuzz.flow.FizzFlowConfiguration
 
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
 @EnableIntegration
-class FizzFlowTest {
+class FizzFlowConfigurationTest {
 
     @Autowired
     lateinit var context: IntegrationFlowContext
