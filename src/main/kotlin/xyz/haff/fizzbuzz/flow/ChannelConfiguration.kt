@@ -1,52 +1,43 @@
 package xyz.haff.fizzbuzz.flow
 
-import org.springframework.amqp.core.FanoutExchange
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.integration.amqp.dsl.Amqp
-import org.springframework.integration.channel.DirectChannel
-import org.springframework.messaging.MessageChannel
+import org.springframework.integration.amqp.dsl.AmqpMessageChannelSpec
 
-// TODO: These `getObject` invocations carry a comment that say it shouldn't be invoked? I should read about it
 @Configuration
 class ChannelConfiguration(
     private val connectionFactory: AbstractConnectionFactory
 ) {
 
     @Bean
-    fun inputChannel(): MessageChannel = Amqp.channel(connectionFactory)
+    fun inputChannel(): AmqpMessageChannelSpec<*, *> = Amqp.channel(connectionFactory)
         .datatype(Long::class.java)
         .queueName("input")
-        .getObject()
 
     @Bean
-    fun fizzBuzzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+    fun fizzBuzzChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
         .datatype(Long::class.java)
         .queueName("fizzbuzz")
-        .getObject()
 
     @Bean
-    fun fizzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+    fun fizzChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
         .datatype(Long::class.java)
         .queueName("fizz")
-        .getObject()
 
     @Bean
-    fun buzzChannel(): MessageChannel = Amqp.channel(connectionFactory)
+    fun buzzChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
         .datatype(Long::class.java)
         .queueName("buzz")
-        .getObject()
 
     @Bean
-    fun numberChannel(): MessageChannel = Amqp.channel(connectionFactory)
+    fun numberChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
         .datatype(Long::class.java)
         .queueName("number")
-        .getObject()
 
     @Bean
-    fun outputChannel(): MessageChannel = Amqp.publishSubscribeChannel(connectionFactory)
+    fun outputChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.publishSubscribeChannel(connectionFactory)
         .datatype(String::class.java)
         .queueName("output")
-        .getObject()
 }
