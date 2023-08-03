@@ -34,7 +34,10 @@ class RedisCounterServiceTest {
 
     @Test
     fun initialize() {
-        // SANiTY-CHECK
+        // ARRANGE
+        redisTemplate.delete(REDIS_COUNTER_KEY)
+
+        // SANITY-CHECK
         assertFalse(redisTemplate.hasKey(REDIS_COUNTER_KEY))
 
         // ACT
@@ -45,4 +48,15 @@ class RedisCounterServiceTest {
     }
 
 
+    @Test
+    fun next() {
+        // ARRANGE
+        redisTemplate.opsForValue()[REDIS_COUNTER_KEY] = "0"
+
+        // ACT
+        val result = redisCounterService.next()
+
+        // ASSERT
+        assertEquals(1L, result)
+    }
 }
