@@ -1,5 +1,6 @@
 package xyz.haff.fizzbuzz.flow
 
+import org.springframework.amqp.core.FanoutExchange
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -44,8 +45,8 @@ class ChannelConfiguration(
         .getObject()
 
     @Bean
-    fun printChannel(): MessageChannel = Amqp.channel(connectionFactory)
+    fun outputChannel(): MessageChannel = Amqp.publishSubscribeChannel(connectionFactory)
         .datatype(String::class.java)
-        .queueName("print")
+        .queueName("output")
         .getObject()
 }

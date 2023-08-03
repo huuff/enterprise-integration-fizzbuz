@@ -8,11 +8,11 @@ import org.springframework.messaging.MessageChannel
 
 @Configuration
 class PrintFlowConfiguration(
-    private val printChannel: MessageChannel,
+    private val outputChannel: MessageChannel,
 ) {
 
     @Bean
-    fun printFlow(): StandardIntegrationFlow = integrationFlow(printChannel) {
+    fun printFlow(): StandardIntegrationFlow = integrationFlow(outputChannel) {
         handle {
             println(it.payload)
         }

@@ -9,12 +9,12 @@ import org.springframework.messaging.MessageChannel
 @Configuration
 class FizzBuzzFlowConfiguration(
     private val fizzBuzzChannel: MessageChannel,
-    private val printChannel: MessageChannel,
+    private val outputChannel: MessageChannel,
 ) {
 
     @Bean
     fun fizzBuzzFlow(): StandardIntegrationFlow = integrationFlow(fizzBuzzChannel) {
         transform<Long> { "FizzBuzz" }
-        channel(printChannel)
+        channel(outputChannel)
     }
 }
