@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.integration.dsl.StandardIntegrationFlow
 import org.springframework.integration.dsl.integrationFlow
 import org.springframework.messaging.MessageChannel
+import java.math.BigInteger
 
 @Configuration
 class NumberFlowConfiguration(
@@ -14,7 +15,7 @@ class NumberFlowConfiguration(
 
     @Bean
     fun numberFlow(): StandardIntegrationFlow = integrationFlow(numberChannel) {
-        transform<Long> { it.toString() }
+        transform<BigInteger> { it.toString() }
         channel(outputChannel)
     }
 }

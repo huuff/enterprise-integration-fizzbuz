@@ -13,6 +13,7 @@ import org.springframework.integration.test.matcher.PayloadMatcher.hasPayload
 import org.springframework.messaging.support.GenericMessage
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.context.junit4.SpringRunner
+import java.math.BigInteger
 
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
@@ -32,7 +33,7 @@ class NumberFlowConfigurationTest {
         flow.start()
 
         // ACT
-        sourceChannel.send(GenericMessage(4L))
+        sourceChannel.send(GenericMessage(BigInteger.valueOf(4)))
         val result = targetChannel.receive()
 
         // ASSERT

@@ -12,6 +12,7 @@ import org.testcontainers.containers.RabbitMQContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 import xyz.haff.fizzbuzz.config.REDIS_COUNTER_KEY
+import java.math.BigInteger
 
 @DataRedisTest
 @Testcontainers
@@ -57,6 +58,6 @@ class RedisCounterServiceTest {
         val result = redisCounterService.next()
 
         // ASSERT
-        assertEquals(1L, result)
+        assertEquals(BigInteger.valueOf(1), result)
     }
 }

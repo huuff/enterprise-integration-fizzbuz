@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.integration.dsl.StandardIntegrationFlow
 import org.springframework.integration.dsl.integrationFlow
 import org.springframework.messaging.MessageChannel
+import java.math.BigInteger
 
 @Configuration
 class BuzzFlowConfiguration(
@@ -14,7 +15,7 @@ class BuzzFlowConfiguration(
 
     @Bean
     fun buzzFlow(): StandardIntegrationFlow = integrationFlow(buzzChannel) {
-        transform<Long> { "Buzz" }
+        transform<BigInteger> { "Buzz" }
         channel(outputChannel)
     }
 }

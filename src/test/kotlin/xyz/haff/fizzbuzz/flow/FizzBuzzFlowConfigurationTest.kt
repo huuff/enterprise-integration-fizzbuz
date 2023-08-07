@@ -12,6 +12,7 @@ import org.springframework.integration.test.matcher.PayloadMatcher.hasPayload
 import org.springframework.messaging.support.GenericMessage
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.context.junit4.SpringRunner
+import java.math.BigInteger
 
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
@@ -31,7 +32,7 @@ class FizzBuzzFlowConfigurationTest {
         flow.start()
 
         // ACT
-        sourceChannel.send(GenericMessage(15L))
+        sourceChannel.send(GenericMessage(BigInteger.valueOf(15)))
         val result = destinationChannel.receive()
 
         // ASSERT

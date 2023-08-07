@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.integration.amqp.dsl.Amqp
 import org.springframework.integration.amqp.dsl.AmqpMessageChannelSpec
+import java.math.BigInteger
 
 @Configuration
 class ChannelConfiguration(
@@ -13,27 +14,27 @@ class ChannelConfiguration(
 
     @Bean
     fun inputChannel(): AmqpMessageChannelSpec<*, *> = Amqp.channel(connectionFactory)
-        .datatype(Long::class.java)
+        .datatype(BigInteger::class.java)
         .queueName("input")
 
     @Bean
     fun fizzBuzzChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
-        .datatype(Long::class.java)
+        .datatype(BigInteger::class.java)
         .queueName("fizzbuzz")
 
     @Bean
     fun fizzChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
-        .datatype(Long::class.java)
+        .datatype(BigInteger::class.java)
         .queueName("fizz")
 
     @Bean
     fun buzzChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
-        .datatype(Long::class.java)
+        .datatype(BigInteger::class.java)
         .queueName("buzz")
 
     @Bean
     fun numberChannel(): AmqpMessageChannelSpec<*, *>  = Amqp.channel(connectionFactory)
-        .datatype(Long::class.java)
+        .datatype(BigInteger::class.java)
         .queueName("number")
 
     @Bean

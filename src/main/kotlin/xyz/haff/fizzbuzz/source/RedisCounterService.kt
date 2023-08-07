@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.data.redis.core.script.RedisScript
 import org.springframework.stereotype.Service
 import xyz.haff.fizzbuzz.config.REDIS_COUNTER_KEY
+import java.math.BigInteger
 
 @Service
 class RedisCounterService(
@@ -24,6 +25,6 @@ class RedisCounterService(
 
 
     // TODO: Handle non-existent key here and in the script
-    fun next(): Long = redisTemplate.execute(incBigCounter, listOf(REDIS_COUNTER_KEY), "1").toLong()
+    fun next(): BigInteger = redisTemplate.execute(incBigCounter, listOf(REDIS_COUNTER_KEY)).toBigInteger()
 
 }

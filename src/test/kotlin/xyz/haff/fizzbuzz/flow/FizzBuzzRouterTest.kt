@@ -6,6 +6,7 @@ import org.junit.runner.RunWith
 import org.springframework.integration.channel.DirectChannel
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.context.junit4.SpringRunner
+import java.math.BigInteger
 
 @RunWith(SpringRunner::class)
 @SpringJUnitConfig
@@ -23,28 +24,28 @@ class FizzBuzzRouterTest {
 
     @Test
     fun routesFizz() {
-        val channel = router.route(3L)
+        val channel = router.route(BigInteger.valueOf(3))
 
         assertSame(fizzChanel, channel)
     }
 
     @Test
     fun routesBuzz() {
-        val channel = router.route(5L)
+        val channel = router.route(BigInteger.valueOf(5))
 
         assertSame(buzzChannel, channel)
     }
 
     @Test
     fun routesFizzBuzz() {
-        val channel = router.route(15L)
+        val channel = router.route(BigInteger.valueOf(15))
 
         assertSame(fizzBuzzChannel, channel)
     }
 
     @Test
     fun routesNumber() {
-        val channel = router.route(7L)
+        val channel = router.route(BigInteger.valueOf(7))
 
         assertSame(numberChannel, channel)
     }
