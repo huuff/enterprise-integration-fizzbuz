@@ -15,7 +15,7 @@ import xyz.haff.fizzbuzz.config.REDIS_COUNTER_KEY
 
 @DataRedisTest
 @Testcontainers
-@Import(RedisCounterService::class)
+@Import(RedisCounterService::class, RedisScriptConfiguration::class)
 class RedisCounterServiceTest {
 
     companion object {
